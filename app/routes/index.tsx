@@ -23,10 +23,16 @@ export default function Index() {
         </p>
         <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
           <Link
-            to="/notes"
+            to="/about"
             className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-green-700 shadow-sm hover:bg-green-50 sm:px-8"
           >
-            Foo
+            About
+          </Link>
+          <Link
+            to="/app"
+            className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-green-700 shadow-sm hover:bg-green-50 sm:px-8"
+          >
+            App
           </Link>
         </div>
       </div>
