@@ -549,6 +549,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: center;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }

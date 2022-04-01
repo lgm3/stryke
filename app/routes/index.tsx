@@ -21,7 +21,7 @@ export default function Index() {
         <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
           This is just a demo, all data is mocked
         </p>
-        <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
+        <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center gap-4">
           <Link
             to="/about"
             className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-green-700 shadow-sm hover:bg-green-50 sm:px-8"
