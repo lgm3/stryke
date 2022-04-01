@@ -18,6 +18,9 @@ export default function Index() {
         <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
           Created By Luke Michals
         </p>
+        <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
+          This is just a demo, all data is mocked
+        </p>
         <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
           <Link
             to="/notes"
