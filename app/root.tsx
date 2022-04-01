@@ -151,9 +151,9 @@ function Footer() {
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="app">
-      <Header />
+      {/* <Header /> */}
       <div>{children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
