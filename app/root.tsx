@@ -138,7 +138,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         <div className="drawer-content flex flex-col">
           <div className="w-full navbar bg-base-200 border-2 border-[#f2a900]">
             <div className="flex-1 px-2 mx-2">
-              <Link to="about">stryke</Link>
+              <Link to="/">stryke</Link>
             </div>
             <div className="flex-none block">
               <ul className="menu menu-horizontal">
