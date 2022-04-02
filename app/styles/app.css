@@ -985,6 +985,41 @@ html {
   z-index: 11;
 }
 
+.btn-outline.btn-primary .badge {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
+.btn-outline.btn-primary .badge-outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
+
+.btn-outline.btn-primary:hover .badge {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pc) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pc) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
+
+.btn-outline.btn-primary:hover .badge.outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pc) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
 .btn:active:hover,
   .btn:active:focus {
   -webkit-animation: none;
@@ -1002,6 +1037,26 @@ html {
 .btn:focus-visible {
   outline: 2px solid hsl(var(--nf));
   outline-offset: 2px;
+}
+
+.btn-primary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
+.btn-primary:hover, .btn-primary.btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pf, var(--p)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid hsl(var(--p));
 }
 
 .btn.glass:hover,
@@ -1029,6 +1084,20 @@ html {
 
 .btn-ghost:focus-visible {
   outline: 2px solid 0 0 2px currentColor;
+}
+
+.btn-outline.btn-primary {
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
+
+.btn-outline.btn-primary:hover {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--pf, var(--p)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
 }
 
 .btn-disabled, .btn-disabled:hover, .btn[disabled], .btn[disabled]:hover {
@@ -1590,6 +1659,10 @@ body[dir="rtl"] .checkbox:checked,
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
 }
 
+.rounded-box {
+  border-radius: var(--rounded-box, 1rem);
+}
+
 .btn-circle:where(.btn-xs) {
   height: 1.5rem;
   width: 1.5rem;
@@ -1735,6 +1808,10 @@ body[dir="rtl"] .checkbox:checked,
   height: 20rem;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1753,6 +1830,14 @@ body[dir="rtl"] .checkbox:checked,
 
 .w-80 {
   width: 20rem;
+}
+
+.w-56 {
+  width: 14rem;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .max-w-lg {
@@ -1829,6 +1914,16 @@ body[dir="rtl"] .checkbox:checked,
   border-color: transparent;
 }
 
+.border-accent {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+}
+
+.border-primary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+}
+
 .bg-base-200 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
@@ -1844,12 +1939,26 @@ body[dir="rtl"] .checkbox:checked,
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-primary-content {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--pc) / var(--tw-bg-opacity));
+}
+
+.bg-base-100 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
 .fill-current {
   fill: currentColor;
 }
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-2 {
