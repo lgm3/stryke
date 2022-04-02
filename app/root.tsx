@@ -137,14 +137,15 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="drawer">
         <div className="drawer-content flex flex-col">
           <div className="w-full navbar bg-base-200 border-2 border-[#f2a900]">
-            <div className="flex-1 px-2 mx-2">Navbar Title</div>
+            <div className="flex-1 px-2 mx-2">
+              <Link to="about">stryke</Link>
+            </div>
             <div className="flex-none block">
               <ul className="menu menu-horizontal">
                 <li>
-                  <a>Link 1</a>
-                </li>
-                <li>
-                  <a>Link 2</a>
+                  <button className="btn btn-ghost">
+                    <Link to="about">about</Link>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -154,14 +155,22 @@ function Layout({ children }: { children: React.ReactNode }) {
               <label htmlFor="my-drawer" className="drawer-overlay"></label>
               <ul className="menu overflow-y-auto text-base-content">
                 <li>
-                  <a>Sidebar Item 1</a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <a>Sidebar Item 2</a>
+                  <Link to="/bitcoin">Bitcoin</Link>
+                </li>
+                <li>
+                  <Link to="/api">API</Link>
+                </li>
+                <li>
+                  <Link to="/automation">Automation</Link>
                 </li>
               </ul>
             </div>
-            <div className="drawer-content flex flex-row w-full p-4">{children}</div>
+            <div className="drawer-content flex flex-row w-full p-4">
+              {children}
+            </div>
           </div>
         </div>
       </div>
