@@ -17,24 +17,11 @@ export let links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: appStylesUrl }];
 };
 
-// https://remix.run/api/conventions#default-export
-// https://remix.run/api/conventions#route-filenames
-export default function App() {
-  return (
-    <Document>
-      <Layout>
-        <Outlet />
-      </Layout>
-    </Document>
-  );
-}
-
-// https://remix.run/docs/en/v1/api/conventions#errorboundary
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
   return (
     <Document title="Error!">
-      <Layout>
+      <SiteLayout>
         <div>
           <h1>There was an error</h1>
           <p>{error.message}</p>
@@ -44,12 +31,11 @@ export function ErrorBoundary({ error }: { error: Error }) {
             users to see.
           </p>
         </div>
-      </Layout>
+      </SiteLayout>
     </Document>
   );
 }
 
-// https://remix.run/docs/en/v1/api/conventions#catchboundary
 export function CatchBoundary() {
   let caught = useCatch();
 
@@ -75,12 +61,12 @@ export function CatchBoundary() {
 
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
-      <Layout>
+      <SiteLayout>
         <h1>
           {caught.status}: {caught.statusText}
         </h1>
         {message}
-      </Layout>
+      </SiteLayout>
     </Document>
   );
 }
@@ -116,44 +102,67 @@ function StrykeLogo() {
 }
 
 function Header() {
+  return <header>Header</header>;
+}
+
+function SidebarButton() {
   return (
-    <header>
-      <div>
-        <Link to="/" title="Remix">
-          <StrykeLogo />
-        </Link>
-        <nav aria-label="Main navigation">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <a href="https://remix.run/docs">Remix Docs</a>
-            </li>
-            <li>
-              <a href="https://github.com/remix-run/remix">GitHub</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <label htmlFor="my-drawer" className="btn btn-circle swap swap-rotate">
+      <input type="checkbox" />
+      <svg
+        className="swap-off fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 512 512"
+      >
+        <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+      </svg>
+      <svg
+        className="swap-on fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 512 512"
+      >
+        <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+      </svg>
+    </label>
   );
 }
 
-function Footer() {
-  return (
-    <footer>
-      <p>&copy; lgm</p>
-    </footer>
-  );
-}
-
-function Layout({ children }: { children: React.ReactNode }) {
+function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="app">
-      {/* <Header /> */}
-      <div>{children}</div>
-      {/* <Footer /> */}
+      <div className="drawer">
+        <div className="drawer-content flex flex-col">
+          <div className="w-full navbar bg-base-200 border-2 border-primary">
+            <div className="flex-1 px-2 mx-2">
+              <Link to="/">stryke</Link>
+            </div>
+            <div className="flex-none block">
+              <ul className="menu menu-horizontal">
+                <li>
+                  <button className="btn btn-ghost">
+                    <Link to="about">about</Link>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {children}
+        </div>
+      </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Document>
+      <SiteLayout>
+        <Outlet />
+      </SiteLayout>
+    </Document>
   );
 }

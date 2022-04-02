@@ -8,5 +8,8 @@ module.exports = {
       mono: ["ui-monospace", "SFMono-Regular"],
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["forest"],
+  },
 };

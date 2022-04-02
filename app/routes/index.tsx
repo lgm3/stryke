@@ -1,44 +1,98 @@
-import type { MetaFunction } from "remix";
 import { Link } from "remix";
 
-export let meta: MetaFunction = () => {
-  return {
-    title: "stryke",
-    description: "A more connected financial world",
-  };
-};
+function ApplicationLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="drawer flex flex-row">
+      <div className="drawer-side h-full bg-base-200 p-4 border-x-2 border-primary w-64">
+        <label htmlFor="my-drawer" className="drawer-overlay"></label>
+        <ul className="menu bg-base-100 p-2 rounded-box">
+          <li>
+            <Link to="/" className="active">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/bitcoin">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              Bitcoin
+            </Link>
+          </li>
+          <li>
+            <Link to="/api">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+              API
+            </Link>
+          </li>
+          <li>
+            <Link to="/automation">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+              Automation
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div className="drawer-content flex flex-row w-full p-4">{children}</div>
+    </div>
+  );
+}
 
 export default function Index() {
   return (
-    <main className="relative min-h-screen bg-black sm:flex sm:items-center sm:justify-center z-0">
-      <div className="z-10 mx-auto">
-        <h1 className="text-center text-6xl tracking-tight text-white sm:text-8xl lg:text-9xl">
-          stryke
-        </h1>
-        <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
-          Created By Luke Michals
-        </p>
-        <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
-          This is just a demo, all data is mocked
-        </p>
-        <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center gap-4">
-          <Link
-            to="/about"
-            className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-green-700 shadow-sm hover:bg-green-50 sm:px-8"
-          >
-            About
-          </Link>
-          <Link
-            to="/app"
-            className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-green-700 shadow-sm hover:bg-green-50 sm:px-8"
-          >
-            App
-          </Link>
-        </div>
-      </div>
-
-      <div className="bg-circle absolute top-20 right-20 h-96 w-96 rounded-full opacity-25"></div>
-      <div className="bg-circle absolute top-80 right-30 h-80 w-80 rounded-full opacity-25"></div>
-    </main>
+    <ApplicationLayout>
+      <div>This is the lowest level index file</div>;
+    </ApplicationLayout>
   );
 }
