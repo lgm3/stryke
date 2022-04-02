@@ -1,6 +1,42 @@
+import { json, useLoaderData } from "remix";
+
+type BitcoinEvent = {
+  name: string;
+  job: string;
+  favoriteColor: string;
+};
+
+type LoaderData = {
+  bitcoinEvents: Array<BitcoinEvent>;
+};
+
+export const loader = async () => {
+  return json<LoaderData>({
+    bitcoinEvents: [
+      {
+        name: "Cy Ganderton",
+        job: "Quality Control Specialist",
+        favoriteColor: "Blue",
+      },
+      {
+        name: "Hart Hagerty",
+        job: "Desktop Support Technician",
+        favoriteColor: "Purple",
+      },
+      {
+        name: "Brice Swyre",
+        job: "Tax Accountant",
+        favoriteColor: "Red",
+      },
+    ],
+  });
+};
+
 export default function Index() {
+  const { bitcoinEvents } = useLoaderData() as LoaderData;
+  console.log({ bitcoinEvents });
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto w-full">
       <table className="table w-full">
         <thead>
           <tr>
@@ -11,24 +47,16 @@ export default function Index() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          <tr className="hover">
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
+          {bitcoinEvents.map((bitcoinEvent, i) => {
+            return (
+              <tr key={i} className="hover">
+                <th>{i}</th>
+                <td>{bitcoinEvent.name}</td>
+                <td>{bitcoinEvent.job}</td>
+                <td>{bitcoinEvent.favoriteColor}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
