@@ -9,9 +9,23 @@ type BitcoinEvent = {
 
 type LoaderData = {
   bitcoinEvents: Array<BitcoinEvent>;
+  // btcPriceHistory: any;
 };
 
 export const loader = async () => {
+  const btcPriceHistory = await fetch(
+    "https://api.coinstats.app/public/v1/charts?period=1m&coinId=ethereum",
+    {
+      method: "GET",
+      redirect: "follow",
+    }
+  )
+    .then((response) => response.text())
+    .then((result) => result)
+    .catch((error) => console.log("error", error));
+
+  console.log(btcPriceHistory);
+
   return json<LoaderData>({
     bitcoinEvents: [
       {
@@ -30,12 +44,16 @@ export const loader = async () => {
         favoriteColor: "Red",
       },
     ],
+    // btcPriceHistory,
   });
 };
 
 export default function Index() {
-  const { bitcoinEvents } = useLoaderData() as LoaderData;
-  console.log({ bitcoinEvents });
+  const {
+    bitcoinEvents,
+    // btcPriceHistory
+  } = useLoaderData() as LoaderData;
+  // console.log({ btcPriceHistory });
   return (
     <ApplicationLayout activeModule="bitcoin">
       <div className="overflow-x-auto w-full">
