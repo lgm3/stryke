@@ -111,17 +111,15 @@ function SiteLayout({ children }: { children: React.ReactNode }) {
       <div className="drawer">
         <div className="drawer-content flex flex-col">
           <div className="w-full navbar bg-base-200 border-2 border-primary">
-            <div className="flex-1 px-2 mx-2">
-              <Link to="/">stryke</Link>
+            <div className="flex-1">
+              <button className="btn btn-ghost normal-case">
+                <Link to="/">stryke</Link>
+              </button>
             </div>
             <div className="flex-none block">
-              <ul className="menu menu-horizontal">
-                <li>
-                  <button className="btn btn-ghost">
-                    <Link to="about">about</Link>
-                  </button>
-                </li>
-              </ul>
+              <button className="btn btn-ghost normal-case">
+                <Link to="about">About</Link>
+              </button>
             </div>
           </div>
           {children}
