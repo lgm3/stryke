@@ -1,17 +1,19 @@
 import { Link } from "remix";
 
 export default function ApplicationLayout({
+  activeModule,
   children,
 }: {
+  activeModule?: "bitcoin" | "api" | "automation";
   children: React.ReactNode;
 }) {
   return (
     <div className="drawer flex flex-row">
       <div className="drawer-side h-full bg-base-200 p-4 border-x-2 border-primary w-64">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
-        <ul className="menu bg-base-100 p-2 rounded-box">
+        <ul className="menu bg-base-100 p-2 rounded-box gap-2">
           <li>
-            <Link to="/" className="active">
+            <Link to="/" className={activeModule ? "" : "active"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -30,7 +32,10 @@ export default function ApplicationLayout({
             </Link>
           </li>
           <li>
-            <Link to="/bitcoin">
+            <Link
+              to="/bitcoin"
+              className={activeModule === "bitcoin" ? "active" : ""}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -49,7 +54,7 @@ export default function ApplicationLayout({
             </Link>
           </li>
           <li>
-            <Link to="/api">
+            <Link to="/api" className={activeModule === "api" ? "active" : ""}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -68,7 +73,10 @@ export default function ApplicationLayout({
             </Link>
           </li>
           <li>
-            <Link to="/automation">
+            <Link
+              to="/automation"
+              className={activeModule === "automation" ? "active" : ""}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

@@ -37,7 +37,7 @@ export default function Index() {
   const { bitcoinEvents } = useLoaderData() as LoaderData;
   console.log({ bitcoinEvents });
   return (
-    <ApplicationLayout>
+    <ApplicationLayout activeModule="bitcoin">
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
