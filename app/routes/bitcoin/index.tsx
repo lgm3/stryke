@@ -36,6 +36,21 @@ export const loader = async () => {
 
   console.log(btcPriceHistory);
 
+  /**
+   * {
+   *    "chart":[
+   *     [
+   *        1646470500, // epoch time
+   *        39110.1002, // price
+   *        1,          // not sure
+   *        14.7502     // not sure
+   *     ],
+   *     [...],
+   *     [...],
+   *     [...],
+   * }
+   */
+
   return json<LoaderData>({
     bitcoinEvents: [
       {
