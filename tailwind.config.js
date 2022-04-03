@@ -8,7 +8,10 @@ module.exports = {
       mono: ["ui-monospace", "SFMono-Regular"],
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+  ],
   daisyui: {
     themes: ["forest"],
   },
