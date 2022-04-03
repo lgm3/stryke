@@ -1,27 +1,11 @@
-# Remix
+# stryke
 
-This directory is a brief example of a [Remix](https://remix.run/docs) site that can be deployed to Vercel with zero configuration.
+[strike](https://strike.me/) is a company focused on connecting the financial world by utilizing bitcoin as an international settlement layer.
 
-## Deploy Your Own
+strike doesn't have a web app and they are hiring for a [Senior Frontend Engineer](https://strike.me/en/jobs?gh_jid=4035929004).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/remix&template=remix)
+[stryke](https://stryke.vercel.app) is web app built by [@lgm3](https://github.com/lgm3) to demonstrate what a strike frontend might look like.
 
-_Live Example: https://remix-run-template.vercel.app_
+All data is mocked and no data is ever saved.
 
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
-npm install
-```
-
-Afterwards, start the Remix development server like so:
-
-```sh
-npm run dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
-
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+Feedback is appreciated. The best way to leave feedback is to create an issue in the github repository.
