@@ -161,35 +161,45 @@ function BitcoinChart({ data }: BitcoinChartProps) {
   );
 }
 
+interface BitcoinEventTableProps {
+  events: Array<BitcoinEvent>;
+}
+
+function BitcoinEventTable({ events }: BitcoinEventTableProps) {
+  return (
+    <table className="table w-full">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Job</th>
+          <th>Favorite Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        {events.map((event, i) => {
+          return (
+            <tr key={i} className="hover">
+              <th>{i}</th>
+              <td>{event.name}</td>
+              <td>{event.job}</td>
+              <td>{event.favoriteColor}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+}
+
 export default function Index() {
   const { bitcoinEvents, btcPriceHistory } = useLoaderData() as LoaderData;
   console.log({ btcPriceHistory });
   return (
     <ApplicationLayout activeModule="bitcoin">
-      <div className="overflow-x-auto w-full">
+      <div className="w-full flex flex-col items-center">
         <BitcoinChart data={btcPriceHistory} />
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bitcoinEvents.map((bitcoinEvent, i) => {
-              return (
-                <tr key={i} className="hover">
-                  <th>{i}</th>
-                  <td>{bitcoinEvent.name}</td>
-                  <td>{bitcoinEvent.job}</td>
-                  <td>{bitcoinEvent.favoriteColor}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <BitcoinEventTable events={bitcoinEvents} />
       </div>
     </ApplicationLayout>
   );
