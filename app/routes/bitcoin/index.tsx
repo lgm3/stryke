@@ -17,9 +17,34 @@ type BitcoinEvent = {
   favoriteColor: string;
 };
 
+type BitcoinDataPoints = Array<Number>;
+interface ApiResponseJson {
+  chart: Array<BitcoinDataPoints>;
+}
+type MappedApiResponse = Array<{
+  formattedDate: String;
+  formattedPrice: String;
+}>;
+
+var currencyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
+currencyFormatter.format(2500);
+
+function reMapApiData({ chart }: ApiResponseJson): MappedApiResponse {
+  return chart.map(([epochTime, price]) => ({
+    formattedDate: new Date(1000 * Number(epochTime)).toLocaleDateString(
+      "en-US"
+    ),
+    formattedPrice: currencyFormatter.format(Number(price)),
+  }));
+}
+
 type LoaderData = {
   bitcoinEvents: Array<BitcoinEvent>;
-  // btcPriceHistory: any;
+  btcPriceHistory: MappedApiResponse;
 };
 
 export const loader = async () => {
@@ -30,11 +55,12 @@ export const loader = async () => {
       redirect: "follow",
     }
   )
-    .then((response) => response.text())
-    .then((result) => result)
-    .catch((error) => console.log("error", error));
-
-  console.log(btcPriceHistory);
+    .then((response) => response.json())
+    .then((result: ApiResponseJson) => reMapApiData(result))
+    .catch((error) => {
+      console.log("error", error);
+      return [];
+    });
 
   /**
    * {
@@ -69,7 +95,7 @@ export const loader = async () => {
         favoriteColor: "Red",
       },
     ],
-    // btcPriceHistory,
+    btcPriceHistory,
   });
 };
 
@@ -152,11 +178,8 @@ function BitcoinChart() {
 }
 
 export default function Index() {
-  const {
-    bitcoinEvents,
-    // btcPriceHistory
-  } = useLoaderData() as LoaderData;
-  // console.log({ btcPriceHistory });
+  const { bitcoinEvents, btcPriceHistory } = useLoaderData() as LoaderData;
+  console.log({ btcPriceHistory });
   return (
     <ApplicationLayout activeModule="bitcoin">
       <div className="overflow-x-auto w-full">
