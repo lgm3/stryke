@@ -24,6 +24,8 @@ interface ApiResponseJson {
 type MappedApiResponse = Array<{
   formattedDate: String;
   formattedPrice: String;
+  epochTime: Number;
+  price: Number;
 }>;
 
 var currencyFormatter = new Intl.NumberFormat("en-US", {
@@ -39,6 +41,8 @@ function reMapApiData({ chart }: ApiResponseJson): MappedApiResponse {
       "en-US"
     ),
     formattedPrice: currencyFormatter.format(Number(price)),
+    epochTime,
+    price,
   }));
 }
 
@@ -99,51 +103,32 @@ export const loader = async () => {
   });
 };
 
-function BitcoinChart() {
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+type BitcoinChartProps = {
+  data: MappedApiResponse;
+};
+
+function BitcoinChart({ data }: BitcoinChartProps) {
+  // {
+  //   epochTime: 1649148900,
+  //   formattedDate: '4/5/2022',
+  //   price: 46616.1844
+  //   formattedPrice: '$46,616.18',
+  // }
+
+  // const data = [
+  //   {
+  //     formattedDate: "4/5/2022",
+  //     uv: 2390,
+  //     pv: 3800,
+  //     amt: 2500,
+  //   },
+  //   {
+  //     formattedDate: "Page G",
+  //     uv: 3490,
+  //     pv: 4300,
+  //     amt: 2100,
+  //   },
+  // ];
 
   return (
     <div className="w-48 h-48">
@@ -160,17 +145,16 @@ function BitcoinChart() {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="formattedDate" />
           <YAxis />
           <Tooltip />
           <Legend />
           <Line
             type="monotone"
-            dataKey="pv"
+            dataKey="price"
             stroke="#8884d8"
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -183,7 +167,7 @@ export default function Index() {
   return (
     <ApplicationLayout activeModule="bitcoin">
       <div className="overflow-x-auto w-full">
-        <BitcoinChart />
+        <BitcoinChart data={btcPriceHistory} />
         <table className="table w-full">
           <thead>
             <tr>
