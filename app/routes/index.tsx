@@ -2,7 +2,7 @@ import ApplicationLayout from "~/components/ApplicationLayout";
 
 function DataBar() {
   return (
-    <div className="stats shadow">
+    <div className="stats shadow stats-vertical lg:stats-horizontal">
       <div className="stat">
         <div className="stat-figure text-primary">
           <svg
@@ -45,6 +45,24 @@ function DataBar() {
         <div className="stat-value text-secondary">1.3K</div>
         <div className="stat-desc">-76% over the last month</div>
       </div>
+
+      <div className="stats bg-primary text-primary-content mt-8">
+        <div className="stat">
+          <div className="stat-title">Account balance</div>
+          <div className="stat-value">$89,400</div>
+          <div className="stat-actions">
+            <button className="btn btn-sm btn-success">Add funds</button>
+          </div>
+        </div>
+        <div className="stat">
+          <div className="stat-title">Current balance</div>
+          <div className="stat-value">$89,400</div>
+          <div className="stat-actions">
+            <button className="btn btn-sm">Withdrawal</button>
+            <button className="btn btn-sm">deposit</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -53,6 +71,11 @@ export default function Index() {
   return (
     <ApplicationLayout>
       <DataBar />
+      <input
+        type="text"
+        placeholder="Search"
+        className="input input-bordered input-primary w-full max-w-xs mt-8"
+      ></input>
     </ApplicationLayout>
   );
 }
