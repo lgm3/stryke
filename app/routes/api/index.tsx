@@ -5,7 +5,7 @@ export default function Index() {
     <ApplicationLayout activeModule="api">
       <div className="mockup-code">
         <pre data-prefix="$">
-          <code>npm i daisyui</code>
+          <code>npm i stryke-api</code>
         </pre>
         <pre data-prefix=">" className="text-warning">
           <code>installing...</code>
