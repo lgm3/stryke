@@ -43,8 +43,8 @@ function Circles() {
 
 export default function About() {
   return (
-    <main className="relative min-h-screen bg-black sm:flex sm:items-center sm:justify-center z-0">
-      <div className="hero min-h-screen bg-base-200">
+    <main className="relative bg-black sm:flex sm:items-center sm:justify-center z-0">
+      <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
             <Circles />
