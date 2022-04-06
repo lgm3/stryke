@@ -67,6 +67,7 @@ export const loader = async () => {
     });
 
   /**
+   * Here's what the [coinstats API](https://documenter.getpostman.com/view/5734027/RzZ6Hzr3) returns:
    * {
    *    "chart":[
    *     [
@@ -75,9 +76,7 @@ export const loader = async () => {
    *        1,          // not sure
    *        14.7502     // not sure
    *     ],
-   *     [...],
-   *     [...],
-   *     [...],
+   *     ...
    * }
    */
 
@@ -108,30 +107,8 @@ type BitcoinChartProps = {
 };
 
 function BitcoinChart({ data }: BitcoinChartProps) {
-  // {
-  //   epochTime: 1649148900,
-  //   formattedDate: '4/5/2022',
-  //   price: 46616.1844
-  //   formattedPrice: '$46,616.18',
-  // }
-
-  // const data = [
-  //   {
-  //     formattedDate: "4/5/2022",
-  //     uv: 2390,
-  //     pv: 3800,
-  //     amt: 2500,
-  //   },
-  //   {
-  //     formattedDate: "Page G",
-  //     uv: 3490,
-  //     pv: 4300,
-  //     amt: 2100,
-  //   },
-  // ];
-
   return (
-    <div className="w-48 h-48">
+    <div className="w-96 h-64">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -194,7 +171,7 @@ function BitcoinEventTable({ events }: BitcoinEventTableProps) {
 
 export default function Index() {
   const { bitcoinEvents, btcPriceHistory } = useLoaderData() as LoaderData;
-  console.log({ btcPriceHistory });
+
   return (
     <ApplicationLayout activeModule="bitcoin">
       <div className="w-full flex flex-col items-center">

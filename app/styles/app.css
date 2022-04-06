@@ -1964,6 +1964,10 @@ html {
   height: 12rem;
 }
 
+.h-64 {
+  height: 16rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2042,10 +2046,6 @@ html {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.overflow-x-auto {
-  overflow-x: auto;
 }
 
 .rounded-full {
